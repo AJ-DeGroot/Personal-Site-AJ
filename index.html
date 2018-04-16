@@ -35,7 +35,7 @@
 
 				<hr class="grey"/>
 
-				<p class="bio"> AJ De Groot developed a love for animation and coding while in high school. Starting with flash games, AJ moved up to After Effects, Maya, and C4D where he used code to supplement his animations. After recieving his degree for Motion Design, AJ realized that coding is where his heart belonged. The journey has begun.
+				<p class="bio"> AJ loves life, animation, and programming.
 				</p>
 			</div>
 		<div>
@@ -47,16 +47,31 @@
 			<h4>Temperature Conversion</h4>
 			<p>
 				This ruby program will prompt the user for a temperature in degrees Clesius and let the user know what the corresponding temperature is in Fahrenheit.
+      </p>
 		</div>
 
 		<div class="box">
-<pre><code class="language-ruby">puts &quot;Enter Degrees in Celsius, please:&quot;
-celsius = gets.chomp
+<pre><code class="language-javascript">var readlineSync = require(&#x27;readline-sync&#x27;),
+  conversions = [&#x27;Celcius to Fahrenheit&#x27;, &#x27;Fahrenheit to Celcius&#x27;],
+  index = readlineSync.keyInSelect(conversions, &#x27;Which Conversion?&#x27;);
 
-val = celsius.to_f * 9.0/5.0 + 32
-
-puts &quot;The temperature is #{val}
-degrees Farenheit, enjoy the day!&quot;</code></pre>
+if (index == 0) {
+  console.log(&#x27;&#x27;)
+  var degrees = readlineSync.question(&#x27;Enter degrees in Celsius: &#x27;);
+  var degreesNum = Number(degrees);
+  var degreesFahrenheit = degreesNum * 1.8 + 32;
+  console.log(&#x27;It is &#x27; + degreesFahrenheit + &#x27; degrees Fahrenheit&#x27;);
+  console.log(&#x27;&#x27;)
+} else if (index==1) {
+  console.log(&#x27;&#x27;)
+  var degrees = readlineSync.question(&#x27;Enter degrees in Fahrenheit: &#x27;);
+  var degreesNum = Number(degrees);
+  var degreesCelcius = (degreesNum - 32) / 1.8;
+  console.log(&#x27;It is &#x27; + degreesCelcius + &#x27; degrees Celcius&#x27;);
+  console.log(&#x27;&#x27;)
+} else {
+  console.log(&#x27;Exit&#x27;)
+}</code></pre>
 		</div>
 
 		<br class="clear" />
