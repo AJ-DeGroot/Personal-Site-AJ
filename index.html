@@ -78,30 +78,30 @@ if (index == 0) {
 
 		<div class="box">
 <pre><code class="language-ruby">#Prompts user for number input and converts to int
-puts &quot;Please enter a number:&quot;
+puts "Please enter a number:"
 user_number = gets.chomp.to_i
 
 #Checks for last two digits
 special_exceptions = user_number.abs % 100
 
 #Checks for 11, 12, and 13 due to their odd ordinal nature
-if special_exceptions &gt; 10 &amp;&amp; special_exceptions &lt; 14
-    special_numbers_11_12_13 = user_number
+if special_exceptions > 10 &amp;&amp; special_exceptions < 14
+ special_numbers_11_12_13 = user_number
 else
-    ones_place = user_number % 10
+ ones_place = user_number % 10
 end
 
 #Assigns ordinal attachment and outputs text accordingly
 if special_numbers_11_12_13 == user_number
-    puts &quot;You picked a silly number, that's the #{special_numbers_11_12_13}th time today!&quot;
+ puts "#{special_numbers_11_12_13}th"
 elsif ones_place == 1
-    puts &quot;That's your #{user_number}st bratwurst, yum(:&quot;
+ puts "#{user_number}st"
 elsif ones_place == 2
-    puts &quot;I know this is your #{user_number}nd time digging a 6 foot hole, but let me lend you a hand&quot;
+ puts "#{user_number}nd"
 elsif ones_place == 3
-    puts &quot;This is the #{user_number}rd bird I've seen in the herd... word.&quot;
+ puts "#{user_number}rd"
 else
-    puts &quot;#{user_number}th, that's the where you would place is a pillow throwing contest, dishonor on you and your cow.&quot;
+ puts "#{user_number}th"
 end</code></pre>
 		</div>
 
@@ -147,6 +147,30 @@ while n &lt;= user_number
     n = n + 1 
 end</code></pre>
 		</div>
+
+    <br class="clear" />
+
+    <div class="box">
+<pre><code class="language-ruby"></code>def to_i(input)
+  input = input.split('.')[0] if input.include?('.')
+  sign = input[0] == '-' ? -1 : 1
+  input.gsub!(/\A-/, '')
+
+  total = 0
+  input.chars.reverse.each_with_index do |num, index|
+    total = total + ((num.ord - 48) * 10 ** index)
+  end
+
+  total * sign
+end</pre>
+    </div>
+
+    <div class="box">
+      <h4>String to Int</h4>
+      <p>
+        This Javascript program will convert a given string into an integer.
+      </p>
+    </div>
 
 		<br class="clear" />
 
