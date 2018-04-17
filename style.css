@@ -44,10 +44,6 @@ body {
 	background-color: rgba(106,106,155,.1);
 }
 
-#code-samples {
-	margin-top: 55px;
-}
-
 h1 {
 	color: #3e3e3e;
 	font-size: 50px;
@@ -85,6 +81,7 @@ h2 {
 	width: 400px;
 	margin-left: auto;
 	margin-right: auto;
+	margin-bottom: 40px;
 	text-align: center;
 }
 
