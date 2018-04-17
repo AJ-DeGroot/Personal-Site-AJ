@@ -44,6 +44,10 @@ body {
 	background-color: rgba(106,106,155,.1);
 }
 
+#code-samples {
+	margin-top: 55px;
+}
+
 h1 {
 	color: #3e3e3e;
 	font-size: 50px;

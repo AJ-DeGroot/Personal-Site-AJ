@@ -111,27 +111,8 @@ shallow_fifth_node = Tree.new(5, [ninth_node])
 #Trunk
 trunk = Tree.new(2, [seventh_node, shallow_fifth_node])
 
-puts ''
 trunk.search_depth(trunk)
-puts ''
-
-#Leaves
-deep_fifth_node = Tree.new(5, [])
-eleventh_node = Tree.new(11, [])
-fourth_node = Tree.new(4, [])
-
-#Branches
-ninth_node = Tree.new(9, [fourth_node])
-sixth_node = Tree.new(6, [deep_fifth_node, eleventh_node])
-seventh_node = Tree.new(7, [sixth_node])
-shallow_fifth_node = Tree.new(5, [ninth_node])
-
-#Trunk
-trunk = Tree.new(2, [seventh_node, shallow_fifth_node])
-
-puts ''
 trunk.search_breadth(trunk)
-puts ''
 
 </code></pre>
     </div>
@@ -275,42 +256,6 @@ end</code></pre>
     </div>
 
 		<br class="clear" />
-
-    <div class="box">
-      <h4>Tree Sort</h4>
-      <p>
-        This Javascript program will stack a stack of numbers and sort them in order from lowest to highest.
-      </p>
-    </div>
-
-    <div class="box">
-<pre><code class="language-javascript">class Tree
-
-  def sort(item)
-    @initial = [item.shift]
-    until item.count == 0
-      compare(item.shift)
-    end
-    @initial
-  end
-
-  def compare(item)
-    counter = 0
-    current_number = 0
-    until current_number.nil? || current_number > item
-      current_number = @initial[counter]
-      if current_number.nil? || item < current_number 
-        @initial.insert(counter, item)
-        counter = 0
-      else
-        counter += 1
-      end
-    end
-  end
-end</code></pre>
-    </div>
-
-    <br class="clear" />
 
 		<h3 id="web-apps">Web Apps</h3>
 		<hr class="grey"/>
