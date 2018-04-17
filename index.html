@@ -43,6 +43,108 @@
 		<h3 id="code-samples">Code Snippets</h3>
 		<hr class="grey"/>
 
+    <div class="box">
+<pre><code class="language-javascript">class Tree
+  attr_accessor :payload, :children
+
+  def initialize(payload, children)
+    @payload = payload
+    @children = children
+  end
+
+  def search_depth(branch)
+    @stack = []
+    puts 'Depth Search:'
+    depth(branch)
+    puts '-------------'
+  end
+
+  def search_breadth(branch)
+    @queue = []
+    @queue << branch
+    puts 'Breadth Search:'
+    breadth(branch)
+    puts '-------------'
+  end
+  
+  def depth(branch)
+    if check_value(branch)
+    elsif branch.children.count != 0
+      until branch.children.empty?
+        @stack << branch.children.pop
+      end
+      depth(@stack.last)
+    else
+      @stack.pop
+      depth(@stack.last)
+    end
+  end
+
+  def breadth(branch)
+    until @queue.count == 0 || check_value(@queue.first)
+      until @queue.first.children.count == 0
+        @queue << @queue.first.children.shift
+      end
+      @queue.shift
+    end
+  end
+
+  def check_value(branch)
+    puts branch.payload 
+    if branch.payload == 11
+      return branch.payload
+    end
+  end
+end
+
+#Leaves
+deep_fifth_node = Tree.new(5, [])
+eleventh_node = Tree.new(11, [])
+fourth_node = Tree.new(4, [])
+
+#Branches
+ninth_node = Tree.new(9, [fourth_node])
+sixth_node = Tree.new(6, [deep_fifth_node, eleventh_node])
+seventh_node = Tree.new(7, [sixth_node])
+shallow_fifth_node = Tree.new(5, [ninth_node])
+
+#Trunk
+trunk = Tree.new(2, [seventh_node, shallow_fifth_node])
+
+puts ''
+trunk.search_depth(trunk)
+puts ''
+
+#Leaves
+deep_fifth_node = Tree.new(5, [])
+eleventh_node = Tree.new(11, [])
+fourth_node = Tree.new(4, [])
+
+#Branches
+ninth_node = Tree.new(9, [fourth_node])
+sixth_node = Tree.new(6, [deep_fifth_node, eleventh_node])
+seventh_node = Tree.new(7, [sixth_node])
+shallow_fifth_node = Tree.new(5, [ninth_node])
+
+#Trunk
+trunk = Tree.new(2, [seventh_node, shallow_fifth_node])
+
+puts ''
+trunk.search_breadth(trunk)
+puts ''
+
+</code></pre>
+    </div>
+
+    <div class="box">
+      <h4>Tree Traversal</h4>
+      <p>
+        This Javascript program implements a breadth and depth search, an iconic programming problem.
+      </p>
+    </div>
+
+    <br class="clear" />
+
 		<div class="box">
 			<h4>Temperature Conversion</h4>
 			<p>
@@ -151,7 +253,7 @@ end</code></pre>
     <br class="clear" />
 
     <div class="box">
-<pre><code class="language-ruby"></code>def to_i(input)
+<pre><code class="language-javascript">def to_i(input)
   input = input.split('.')[0] if input.include?('.')
   sign = input[0] == '-' ? -1 : 1
   input.gsub!(/\A-/, '')
@@ -162,7 +264,7 @@ end</code></pre>
   end
 
   total * sign
-end</pre>
+end</code></pre>
     </div>
 
     <div class="box">
@@ -173,6 +275,42 @@ end</pre>
     </div>
 
 		<br class="clear" />
+
+    <div class="box">
+      <h4>Tree Sort</h4>
+      <p>
+        This Javascript program will stack a stack of numbers and sort them in order from lowest to highest.
+      </p>
+    </div>
+
+    <div class="box">
+<pre><code class="language-javascript">class Tree
+
+  def sort(item)
+    @initial = [item.shift]
+    until item.count == 0
+      compare(item.shift)
+    end
+    @initial
+  end
+
+  def compare(item)
+    counter = 0
+    current_number = 0
+    until current_number.nil? || current_number > item
+      current_number = @initial[counter]
+      if current_number.nil? || item < current_number 
+        @initial.insert(counter, item)
+        counter = 0
+      else
+        counter += 1
+      end
+    end
+  end
+end</code></pre>
+    </div>
+
+    <br class="clear" />
 
 		<h3 id="web-apps">Web Apps</h3>
 		<hr class="grey"/>
