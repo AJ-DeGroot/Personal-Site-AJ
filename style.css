@@ -18,7 +18,6 @@ body {
 	background-color: #eef1f6;
 
 	height: 500px;
-	padding-bottom: 30px;
 }
 
 
@@ -43,6 +42,10 @@ body {
 
 .hire-me {
 	background-color: rgba(106,106,155,.1);
+}
+
+#code-samples {
+	margin-top: 200px;
 }
 
 h1 {
