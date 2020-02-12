@@ -1,0 +1,391 @@
+<html>
+	<head>
+		<link rel="stylesheet" type="text/css" href="style.css">
+		<link href="https://fonts.googleapis.com/css?family=Raleway:100,200, 300,400,500,700" rel="stylesheet">
+
+		<link rel="stylesheet" href="prism/prism-atom-dark.css" type="text/css" media="screen" />
+
+  		<script type="text/javascript" src="prism/prism.js"></script>
+  		<script type="text/javascript" src="prism/prism.ruby.js"></script>
+
+  		<title>AJ De Groot</title>
+  		<meta name="description" content="AJ De Groot is a both an animator and a software engineer with dreams to merge the two studies into one career." />
+
+	</head>
+
+	<body>
+		<div class="about-container">
+			<div class="nav-bar-list">
+				<a href="#code-samples" class="nav-link">Code Samples</a>
+				<a href="#web-apps" class="nav-link">Web Apps</a>
+				<a href="#skills-and-tools" class="nav-link">Skills &amp; Tools</a>
+				<a href="#contact-me" class="nav-link">Contact</a>
+
+				<br class="clear" />
+
+			</div>
+
+			<div class="about">
+
+				<h1 id="about-me">AJ De Groot</h1>
+
+				<h2>Software Engineer | Motion Designer</h2>
+
+				<hr class="grey"/>
+
+				<p class="bio"> AJ loves life, animation, and programming. Currently AJ is looking to get into Web Developement with particular interests in JavaScript and Ruby on Rails.</p>
+          <p class='github'><a href = 'https://github.com/AJ-DeGroot'>GITHUB ACCOUNT</a>
+				</p>
+			</div>
+		<div>
+
+		<h3 id="code-samples">Code Snippets</h3>
+		<hr class="grey"/>
+
+    <div class="box">
+      <h4>Tree Sort</h4>
+      <p>
+        This Javascript program will stack a stack of numbers and sort them in order from lowest to highest. Included is an Rspec test used to verify the algorithm works successfully.
+      </p>
+    </div>
+
+    <div class="box">
+<pre><code class="language-javascript">class Tree
+
+  def sort(item)
+    @initial = [item.shift]
+    until item.count == 0
+      compare(item.shift)
+    end
+    @initial
+  end
+
+  def compare(item)
+    counter = 0
+    current_number = 0
+    until current_number.nil? || current_number > item
+      current_number = @initial[counter]
+      if current_number.nil? || item < current_number
+        @initial.insert(counter, item)
+        counter = 0
+      else
+        counter += 1
+      end
+    end
+  end
+end
+
+#Tree Rspec tests
+RSpec.describe Tree do
+  describe "tree sort should work" do
+    it "should order the array" do
+      expected = [1, 4, 6, 7, 9, 10, 14]
+      array = [7, 4, 9, 1, 6, 14, 10]
+      tree = Tree.new
+      expect(tree.sort(array)).to eq expected
+    end
+  end
+end</code></pre>
+    </div>
+
+    <br class="clear" />
+
+    <div class="box">
+<pre><code class="language-javascript">class Tree
+  attr_accessor :payload, :children
+
+  def initialize(payload, children)
+    @payload = payload
+    @children = children
+  end
+
+  def search_depth(branch)
+    @stack = []
+    puts 'Depth Search:'
+    depth(branch)
+  end
+
+  def search_breadth(branch)
+    @queue = []
+    @queue << branch
+    puts 'Breadth Search:'
+    breadth(branch)
+  end
+
+  def depth(branch)
+    if check_value(branch)
+    elsif branch.children.count != 0
+      until branch.children.empty?
+        @stack << branch.children.pop
+      end
+      depth(@stack.last)
+    else
+      @stack.pop
+      depth(@stack.last)
+    end
+  end
+
+  def breadth(branch)
+    until @queue.count == 0 || check_value(@queue.first)
+      until @queue.first.children.count == 0
+        @queue << @queue.first.children.shift
+      end
+      @queue.shift
+    end
+  end
+
+  def check_value(branch)
+    puts branch.payload
+    if branch.payload == 11
+      return branch.payload
+    end
+  end
+end
+
+#Leaves
+deep_fifth_node = Tree.new(5, [])
+eleventh_node = Tree.new(11, [])
+fourth_node = Tree.new(4, [])
+
+#Branches
+ninth_node = Tree.new(9, [fourth_node])
+sixth_node = Tree.new(6, [deep_fifth_node, eleventh_node])
+seventh_node = Tree.new(7, [sixth_node])
+shallow_fifth_node = Tree.new(5, [ninth_node])
+
+#Trunk
+trunk = Tree.new(2, [seventh_node, shallow_fifth_node])
+
+trunk.search_depth(trunk)
+trunk.search_breadth(trunk)
+
+</code></pre>
+    </div>
+
+    <div class="box">
+      <h4>Tree Traversal</h4>
+      <p>
+        This Javascript program implements a breadth and depth search, an iconic programming problem. In this example both functions are searching for the node with a payload of '11'.
+      </p>
+    </div>
+
+    <br class="clear" />
+
+		<div class="box">
+			<h4>Temperature Conversion</h4>
+			<p>
+				This Javascript program will prompt the user for either Clesius or Fahrenheit the user know what the other temperature is.
+      </p>
+		</div>
+
+		<div class="box">
+<pre><code class="language-javascript">var readlineSync = require(&#x27;readline-sync&#x27;),
+  conversions = [&#x27;Celcius to Fahrenheit&#x27;, &#x27;Fahrenheit to Celcius&#x27;],
+  index = readlineSync.keyInSelect(conversions, &#x27;Which Conversion?&#x27;);
+
+if (index == 0) {
+  console.log(&#x27;&#x27;)
+  var degrees = readlineSync.question(&#x27;Enter degrees in Celsius: &#x27;);
+  var degreesNum = Number(degrees);
+  var degreesFahrenheit = degreesNum * 1.8 + 32;
+  console.log(&#x27;It is &#x27; + degreesFahrenheit + &#x27; degrees Fahrenheit&#x27;);
+  console.log(&#x27;&#x27;)
+} else if (index==1) {
+  console.log(&#x27;&#x27;)
+  var degrees = readlineSync.question(&#x27;Enter degrees in Fahrenheit: &#x27;);
+  var degreesNum = Number(degrees);
+  var degreesCelcius = (degreesNum - 32) / 1.8;
+  console.log(&#x27;It is &#x27; + degreesCelcius + &#x27; degrees Celcius&#x27;);
+  console.log(&#x27;&#x27;)
+} else {
+  console.log(&#x27;Exit&#x27;)
+}</code></pre>
+		</div>
+
+		<br class="clear" />
+
+		<div class="box">
+<pre><code class="language-ruby">#Prompts user for number input and converts to int
+puts "Please enter a number:"
+user_number = gets.chomp.to_i
+
+#Checks for last two digits
+special_exceptions = user_number.abs % 100
+
+#Checks for 11, 12, and 13 due to their odd ordinal nature
+if special_exceptions > 10 &amp;&amp; special_exceptions < 14
+ special_numbers_11_12_13 = user_number
+else
+ ones_place = user_number % 10
+end
+
+#Assigns ordinal attachment and outputs text accordingly
+if special_numbers_11_12_13 == user_number
+ puts "#{special_numbers_11_12_13}th"
+elsif ones_place == 1
+ puts "#{user_number}st"
+elsif ones_place == 2
+ puts "#{user_number}nd"
+elsif ones_place == 3
+ puts "#{user_number}rd"
+else
+ puts "#{user_number}th"
+end</code></pre>
+		</div>
+
+		<div class="box">
+			<h4>Ordinal Challenge</h4>
+			<p>
+				This ruby program will convert a plain number
+		    to the ordinal of the number. So for example,
+		    if the user enters 2, it will display 2nd, if
+		    the user enters 3, it will display 3rd, etc.
+		    </p>
+		</div>
+
+		<br class="clear" />
+
+		<div class="box">
+			<h4>Foobar</h4>
+			<p>
+				This ruby program is an adaptation of a classic technical
+			interview problem which displays sequences
+			of the Foobar pattern.
+			</p>
+		</div>
+
+		<div class="box">
+<pre><code class="language-ruby">puts &quot;What number will we be counting up to today?:&quot;
+user_number = gets.chomp.to_i
+puts &quot;----&quot;
+
+n = 1
+
+while n &lt;= user_number
+    if n % 5 == 0 &amp;&amp; n % 3 == 0
+        puts &quot;Foobar&quot;
+    elsif n % 3 == 0
+        puts &quot;Foo&quot;
+    elsif n % 5 == 0
+        puts &quot;Bar&quot;
+    else
+        puts n
+    end
+
+    n = n + 1
+end</code></pre>
+		</div>
+
+    <br class="clear" />
+
+    <div class="box">
+<pre><code class="language-javascript">def to_i(input)
+  input = input.split('.')[0] if input.include?('.')
+  sign = input[0] == '-' ? -1 : 1
+  input.gsub!(/\A-/, '')
+
+  total = 0
+  input.chars.reverse.each_with_index do |num, index|
+    total = total + ((num.ord - 48) * 10 ** index)
+  end
+
+  total * sign
+end</code></pre>
+    </div>
+
+    <div class="box">
+      <h4>String to Int</h4>
+      <p>
+        This Javascript program will convert a given string into an integer.
+      </p>
+    </div>
+
+		<br class="clear" />
+
+		<h3 id="web-apps">Web Apps</h3>
+		<hr class="grey"/>
+
+		<div class="box">
+			<h4>Quote Generator</h4>
+			<a href = 'https://splurty-aj-degroot.herokuapp.com/'><img src="app-screenshots/splurty.png" class="full-width" /></a>
+			<p>
+				A database-powered quote generator with a mobile-first
+			    design, using the Ruby on Rails framework, HTML, and CSS.
+			    Uses Git and GitHub for version control, and launched
+			    on Heroku.
+          	</p>
+		</div>
+
+		<div class="box">
+      <h4>Yelp Clone</h4>
+      <a href='https://nomster-aj-degroot.herokuapp.com/'><img src="app-screenshots/nomster.png" class="full-width" /></a>
+      <p>
+        A Yelp clone that integrates with the Google Maps API
+        and includes features like user comments, star ratings,
+        image uploading, and user authentication.
+      </p>
+    </div>
+    <br class="clear" />
+
+    <div class="box">
+      <h4>Two-Sided Market Place</h4>
+      <a href='https://flixster-aj-degroot-ubuntu.herokuapp.com/'><img src="app-screenshots/flixter.png" class="full-width" /></a>
+      <p>
+        A two-sided, video-streaming marketplace platform that
+        features credit card payment capabilities, user role
+        management, complex user interfaces, and advanced
+        database relationships.
+      </p>
+    </div>
+    <div class="box">
+      <h4>Test Driven Development</h4>
+      <a href='https://grammable-aj-degroot.herokuapp.com/'><img src="app-screenshots/grammable.png" class="full-width" /></a>
+      <p>
+        An Instagram clone that was built using industry-standard, test-driven
+        development following numerous red/green/refactor cycles.
+      </p>
+    </div>
+    <br class="clear" />
+    <div class="box">
+      <h4>Single Page Todo Application</h4>
+      <a href='https://todo-aj-degroot.herokuapp.com/'><img src="app-screenshots/todoster.png" class="full-width" /></a>
+      <p>
+        This single-page to-do application features a
+        fluid user interface that– by using JavaScript–
+        allows users to rapidly add dynamic content.
+      </p>
+    </div>
+
+    <br class="clear" />
+
+    <h3 id="skills-and-tools">Skills &amp; Tools</h3>
+    <hr class="grey"/>
+    <p class="skills-and-tools">
+
+    </p>
+    <div class="icons">
+	    <img src="skills-and-tools/github.png" class="icon" />
+	    <img src="skills-and-tools/rubocop.png" class="icon" />
+	    <img src="skills-and-tools/slack.png" class="icon" />
+	    <img src="skills-and-tools/codeship.png" class="icon" />
+
+	    <br class="clear">
+
+	    <img src="skills-and-tools/skills.png" class="icon" />
+	</div>
+
+	<div class="contact-me" id="contact-me">
+		<h3 class="contact-headline">Contact</h3>
+		<hr class="grey" />
+		<p class="contact-info">
+			Currently entertaining new opportunities.
+			Please get in touch via e-mail:
+		</p>
+
+		<p>
+			<a href="mailto:alan.michael.degroot@gmail.com" class="contact-link"> alan.michael.degroot@gmail.com
+			</a>
+	</div>
+
+	</body>
+</html>
