@@ -1,4 +1,8 @@
-body {	
+<<<<<<< b1e473eb91658d0894d8991e509d28a813270f34
+body {
+=======
+body {
+>>>>>>> Updates text and images
 	font-family: 'Raleway', sans-serif;
 	margin: 0;
 }
@@ -54,7 +58,11 @@ body {
 	color: #3e3e3e;
 }
 
-.hire-me {
+<<<<<<< b1e473eb91658d0894d8991e509d28a813270f34
+.contact-me {
+=======
+.contact-me {
+>>>>>>> Updates text and images
 	background-color: rgba(106,106,155,.1);
 }
 
@@ -76,6 +84,13 @@ h2 {
 	margin-top: 0;
 }
 
+<<<<<<< b1e473eb91658d0894d8991e509d28a813270f34
+=======
+#about-me {
+    padding-top: 150px;
+}
+
+>>>>>>> Updates text and images
 .bio {
 	text-align: justify;
 	color: #000000;
@@ -186,4 +201,8 @@ p {
 	color: white;
 	font-weight: 500;
 	font-size: 14px;
+<<<<<<< b1e473eb91658d0894d8991e509d28a813270f34
 }
+=======
+}
+>>>>>>> Updates text and images
